@@ -4,6 +4,7 @@
 
 
 Version control is .....
+a tool that allows you to track progress.
 
 
 * What is version control?  Why is it useful?
