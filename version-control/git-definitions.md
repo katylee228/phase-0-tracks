@@ -4,7 +4,7 @@
 
 
 Version control is .....
-for protecting software.
+for protecting software. It allows you to track progress, review and revert to changes, and merge them into the master version.
 
 * What is version control?  Why is it useful?
 * What is a branch and why would you use one?
