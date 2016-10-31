@@ -4,7 +4,7 @@
 
 
 Version control is .....
-
+for protecting software.
 
 * What is version control?  Why is it useful?
 * What is a branch and why would you use one?
