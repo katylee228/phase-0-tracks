@@ -5,19 +5,20 @@
 #octopus {
   position: absolute;
   margin: auto;
-  margin-top: 75px;
+  top: 75px;
   left: 160px;
   z-index: -1;
 }
 
 
-
 #hat {
   position: absolute;
+  top: 0px;
+  left: 140px;
 }
 
 #glasses {
-  position: relative;
+  position: absolute;
   top: 175px;
   left: 200px;
 
