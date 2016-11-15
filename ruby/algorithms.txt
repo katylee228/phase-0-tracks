@@ -1,0 +1,24 @@
+Release 0
+
+- press the upper button and wait until it arrives
+- get in the elevator when it opens
+- move forward, turn left in the middle of the room, and turn left again
+- press the button which shows "20"
+  - There are 20 buttons total and the "20" button is on top of the second column
+- Wait until it arrives in 20 floor
+  - If it stops before 20th floor, don't get out of the elevator
+- get out of the elevator when it arrives in 20th floor
+
+Release 1
+(How to wear a t-shirt)
+
+- pick a t-shirt that you will wear
+- put your hands inside the shirt
+- If the label is on the back-side:
+  - put your hands into each side of the holes
+-If the label is on the front-side:
+  - put the t-shirt upside down
+  - put your hands into each side of the holes
+- put your head into the middle hole
+- pull your shirt to the bottom
+
