@@ -1,0 +1,27 @@
+header{
+  background-color: #020c4f;
+ color: white;
+ padding: 30px;
+ font-family: Georgia;
+ text-align: center;
+}
+#container {
+  margin: 50px;
+}
+.column-1{
+   color: #020c4f;
+  float:left;
+width: 340px;
+margin-bottom: 10px;
+}
+
+.column-2{
+  color: #020c4f;
+  float:right;
+  width: 300px;
+  margin-bottom: 80px;
+}
+footer{ clear: both;
+border-style: solid;
+    border-width: 2px;
+}
