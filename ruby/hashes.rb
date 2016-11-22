@@ -1,23 +1,23 @@
 =begin
 
 puts "What's your client's name?"
-Name = gets.chomp 
+name = gets.chomp 
 
 puts "How old is your client?"
-Age = gets.to_i 
+age = gets.to_i 
 
 puts "How many children does your client have?"
-Num_kid = gets.to_i 
+num_kid = gets.to_i 
 
 puts "What theme of decoration does your client want?"
-Decor = gets.chomp
+decor = gets.chomp
 
 
 client1 = {
-  name: Name,
-  age: Age,
-  num_kid: Num_kid,
-  decor: Decor
+  name: name,
+  age: age,
+  num_kid: num_kid,
+  decor: decor
 }
 
 p client1
