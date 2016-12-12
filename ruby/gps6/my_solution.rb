@@ -10,6 +10,8 @@
 require_relative 'state_data'
 
 class VirusPredictor
+  
+  attr_accessor :population_density, :population, :state
 
 #when creating a new object with parameters
   def initialize(state_of_origin, population_density, population)
@@ -17,17 +19,16 @@ class VirusPredictor
     @population = population
     @population_density = population_density
   end
-
+  
 #use two methods 
   def virus_effects
-    predicted_deaths(@population_density, @population, @state)
-    speed_of_spread(@population_density, @state)
+    predicted_deaths
+    speed_of_spread
   end
 
-  private
-
+private
 #use three parameters to get the value of number_of_deaths (depending on population density)
-  def predicted_deaths(population_density, population, state)
+  def predicted_deaths
     # predicted deaths is solely based on population density
     if @population_density >= 200
       number_of_deaths = (@population * 0.4).floor
@@ -47,12 +48,12 @@ class VirusPredictor
 
 #takes two parameters to get the value of speed depending on population density
 #the value of speed will be printed
-  def speed_of_spread(population_density, state) #in months
+  def speed_of_spread 
+    #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
     speed = 0.0
-
-    if @population_density >= 200
+   if @population_density >= 200
       speed += 0.5
     elsif @population_density >= 150
       speed += 1
@@ -63,7 +64,7 @@ class VirusPredictor
     else
       speed += 2.5
     end
-
+  
     puts " and will spread across the state in #{speed} months.\n\n"
 
   end
@@ -74,20 +75,21 @@ end
 
 # DRIVER CODE
  # initialize VirusPredictor for each state
+STATE_DATA.each do |state, poulation_info|
+  allstate = VirusPredictor.new(state, STATE_DATA[state][:population_density], STATE_DATA[state][:population])
+     allstate.virus_effects
+end
+
+#========================================================================
+
+#REFLECT
+# The hash in a hash has symbols as keys whereas the outer hash has strings as keys.
+# require_relative compliments built-in method to access a file that is relative to a file containing
+# We use 'require' when we need to get access to files and the code that is inside.
+# use each method to iterate through a hash
+# I realized that there is no need of variables in private methods since we have writable attributes
+# attributes, loading path etc
 
 
-alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
-alabama.virus_effects
-
-jersey = VirusPredictor.new("New Jersey", STATE_DATA["New Jersey"][:population_density], STATE_DATA["New Jersey"][:population])
-jersey.virus_effects
-
-california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population])
-california.virus_effects
-
-alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
-alaska.virus_effects
 
 
-#=======================================================================
-# Reflection Section
