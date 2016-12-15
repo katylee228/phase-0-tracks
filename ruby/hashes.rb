@@ -1,44 +1,61 @@
-=begin
+=begin 
+*get input of client's name, age, number of children, decor theme, etc from users
+*create a hash that has keys and values 
+  *keys should be symbols as labels and values should be users' input 
+*print the hash 
+*give the users the opportunity to update a key 
+  *if she/he says "none", skip it 
+*print the hash 
+=end
 
-puts "What's your client's name?"
+
+puts "Client's information"
+
+puts "Name: "
 name = gets.chomp 
 
-puts "How old is your client?"
-age = gets.to_i 
+puts "Age: "
+age = gets.to_i
 
-puts "How many children does your client have?"
-num_kid = gets.to_i 
+puts "Number of children: "
+num_children = gets.to_i 
 
-puts "What theme of decoration does your client want?"
-decor = gets.chomp
+puts "Decoration theme: "
+decor_theme = gets.chomp 
 
+puts "Are you in the US? (yes or no)"
+residence = gets.chomp 
+if residence == "yes"
+  residence = true 
+elsif residence == "no"
+  residence = false 
+end 
 
-client1 = {
+client = {
   name: name,
   age: age,
-  num_kid: num_kid,
-  decor: decor
+  num_children: num_children,
+  decor_theme: decor_theme,
+  residence: residence
 }
 
-p client1
+p client
 
-puts "Are there any keys that you want to update?"
-update = gets.chomp
-if update == "none"
-  p client1
+puts "Please enter a key that you want to update"
+key_update = gets.chomp 
+if key_update == "none"
+  p client 
   exit!
 end
 
 
-puts "Please enter a new name!"
-new_value = gets.chomp
+puts "please enter a value that you want to update for the key"
+value_update = gets.chomp
 
-client1[new_value] = client1[update.to_sym]
-client1.delete(update.to_sym)
+p client[key_update.to_sym] = value_update
+p client 
 
-p client1
 
-exit!
 
-=end
+
 
