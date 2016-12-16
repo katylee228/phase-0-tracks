@@ -1,46 +1,67 @@
-
+#Write your own method that takes a block
 def greeting
-    puts "Hi, how are you"
-    3.times {yield}
+  puts "Hello, how are they?"
+  name1 = "Steve"
+  name2 = "Diane"
+  3.times {yield(name1, name2)}
+  puts "I am glad to hear that!"
+end 
+
+greeting { |name1, name2| puts "#{name1} and #{name2} are fine!"}
+
+#use each, map, and map!
+alphabets = ["a", "b", "c", "d", "e"]
+
+alphabets.each do |alphabet|
+  puts alphabet
+  "Hello"
 end
-puts " Initialize Block"
-greeting {puts "I am doing well"}
-puts "Block Complete"
+p alphabets
 
-arr = [ "Cupertino", "Alameda", "San Francisco", "Seoul", "Vancouver"]
 
-h = {"name1" => "Ravi", "name2" => "Katy", "age1" => 25, "age2" => 25}
-
-arr.each do |locations|
-    puts locations.reverse.chop.reverse
+alphabets.map! do |alphabet|
+  alphabet.next
 end
+p alphabets
 
-h.each do |key,value|
-    puts key
-    puts value
+
+actor_movie = {
+"Ryan Gosling" => "The Notebook",
+"Rachel McAdams" => "About Time",
+"Colin Firth" => "Bridget Jones's Baby",
+"Jennifer Lawrence" => "Hunger Game"
+}
+
+actor_movie.each do |star, movie|
+  puts "#{star} was in #{movie}!"
 end
+p actor_movie
 
-arr.map do |cities|
-    puts cities.upcase
-
+update_movie = actor_movie.map do |star, movie|
+  puts "#{star} was in #{movie}!"
+  star.upcase
 end
-
-h.map do |keys,values|
-    puts keys.upcase
-end
-
-arr1=[1,2,3,4,5,6,7,8,9,10]
-arr2=[1,5,7,9,10]
-
-h = {"username1" => "Superman", "username2" => "Batman", "number1" => "1", "number2" => "100"}
-
-puts arr1.reject {|x| x < 5}
-puts arr1.select { |x| x < 5 }
-puts arr1.keep_if { |x| x%2 == 0 }
-puts arr2.delete_if { |x| x < 7}
+p update_movie
+#it changes into an array
 
 
-puts h.reject {|keys,values| values.length == 6}
-puts h.select {|keys,values| values.length == 1}
-puts h.keep_if {|keys,values| keys == "username1"}
-puts h.delete_if {|keys,values| keys == "username1"}
+array1 = [1,2,3,4,5,6,7,8,9,10]
+p array1.reject {|number| number < 3}
+p array1.select {|number| number > 7}
+p array1.keep_if {|number| number >2}
+p array1.delete_if {|number| number%2 == 0}
+
+hash1 = {"user1" => "Batman", "user2" => "Superman", "user3" => "Spiderman", "user4" => "Boogieman"}
+p hash1.reject {|user, status| status.length == 8}
+p hash1.select {|user, status| user == "user1"}
+p hash1.keep_if {|user,status| status.length < 9}
+p hash1.delete_if {|user, status| user.include? "2"}
+
+
+
+
+
+
+
+
+
