@@ -1,57 +1,70 @@
-real_names =[]
-fake_names =[]
-spy_name = ""
-until spy_name == "quit"
-puts "What's your name?"
-spy_name = gets.chomp
-
-break if spy_name == 'quit'
-
-
+=begin 
+*get user's input (spy's name)
+*divide the first and last name by space between them and put them in an array
+*write a method to swap them
+*write a method that changes all of the vowels to the next vowel 
+*write at method that changes all of the consonants to the next consonants
+*print the fake name
+=end
 
 
-class Array
-  def swap!(a,b)
-    self[b] = self[b], self[a]
-  end
+
+def swap(name)
+  name_array = name.split(' ')
+  name_array[0], name_array[1] = name_array[1], name_array[0]
+  name_array.join(' ')
 end
 
-
-swap_name = spy_name.split(' ').swap!(0,1).join(' ').downcase
-
-def vowel_adv(str)
-  vowels = ["a", "e", "i", "o", "u"]
-  consons = ["d", "h", "n", "t"]
-  str = str.split('')
-  str_new = str.map do |char|
-    if vowels.include?(char)
-      vowels.rotate(1)[vowels.index(char)]
-    elsif consons.include?(char)
-      char.next.next
-    elsif "z".include?(char)
-      "b"
+def next_vowel(name)
+  vowels = ['a','e','i','o','u']
+  name = swap(name).split('')
+  name_new = name.map do |letter|
+    if vowels.include?(letter)
+      vowels.rotate(1)[vowels.index(letter)]
     else
-      char.next
+      letter
     end
   end
-  str_new.join
+  name_new.join
+end
+
+def next_consonant(name)
+  name = next_vowel(name).downcase.split('')
+  non_consonant = ['a','e','i','o','u', ' ']
+  name_new = name.map do |letter|
+    if non_consonant.include?(letter)
+      letter
+    elsif non_consonant.include? (letter.next)
+    letter.next.next
+    elsif letter.downcase == 'z'
+    letter = 'b'
+    else
+      letter.next
+    end
+  end
+  name_new.join
+end
+
+def capitalize(name)
+  name = next_consonant(name)
+  name_array = name.split(' ')
+  name_array[0].capitalize + ' ' + name_array[1].capitalize
 end
 
 
-final = vowel_adv(swap_name).split('!').map! { |name| name.capitalize}.join(' ')
+
+two_names = {}
+loop do 
+puts "What's your name?"
+real_name = gets.chomp 
+break if real_name == 'quit'
+two_names[real_name] = capitalize(real_name)
+end 
+
+two_names.each do |real_name, fake_name|
+  puts "#{fake_name} is actually #{real_name}!"
+end 
 
 
-puts "Your fake name is #{final}."
+ 
 
-
-fake_names << final
-
-real_names << spy_name
-
-end
-
-i = 0 
-while i < fake_names.length 
-puts "#{real_names[i]} is also known as #{fake_names[i]}."
-i += 1 
-end
