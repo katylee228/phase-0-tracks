@@ -1,55 +1,67 @@
-#pairing-session (Katy Lee, Wes Callahan)
+#Implement a Simple Search
 
-#Release 0
+array = [42, 89, 23, 1]
 
-def fib(n)
-
-array = [0,1]
-
-i = 2
-while i < n
-array[i] = array[i-1] + array[i-2]
-array << array[i] 
-i += 1 
-end
-array.pop
-p array
-end
-
-
-fib(6)
-
-#Release 1
 
 def search_array(arr, n)
-  array = []
-  arr.each {|n| array << n}
-  i = 0
-  while i < arr.length 
-  if n == arr[i]
-  p i 
-end
-i += 1
-end
-end
+    i = 0 
+    while i < arr.length 
+      if arr[i] == n
+      return i 
+      end 
+    i += 1 
+    end 
+end 
 
-arr = [42, 89, 23, 1]
-search_array(arr, 89)
+p search_array(array, 1)
+p search_array(array, 24)
 
-#Release 2 
-def bubble_sort(array)
-  n = array.length 
+#Calculate Fibonacci Numbers
+
+def fib(n)
+  array = [0,1]
+  i = 2 
+  while i < n 
+    array << array[i-2] + array[i-1]
+    i += 1 
+  end 
+  return array
+end 
+
+p fib(8)
+p fib(100).last
+
+
+ 
+#bubble sort compares each pair of adjacent items and swaps them if they are in the wrong order. 
+#I searched materials on youtube to find the right turorial with visualizations 
+#Visualizations definitely helped. 
+#I felt overwhelmed at first.
+
+=begin 
+*Pseudocode*
+*create an array of integers
+*create a method that sorts integers orderly
+  *compare each pair of adjacent items
+  *loop them through so that all of the integers were sorted 
+*print the sorted array
+=end 
+
+def bubble(array)
+  n = array.length
   loop do
-    swapped = FALSE
+    swapped = false
+
     (n-1).times do |i|
       if array[i] > array[i+1]
         array[i], array[i+1] = array[i+1], array[i]
-        swapped = true 
+        swapped = true
       end
     end
-    break if not swapped 
+    break if not swapped
   end
   array
 end
-a = [1,4,1,3,4,1,3,3]
-p bubble_sort(a)
+
+array = [1,5,4,3,10,5,6,7,8,12,15,23,18,5]
+p bubble(array)
