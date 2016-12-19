@@ -1,19 +1,18 @@
-=begin
+=begin 
 
 SPECIES ------------------------
-Pembroke Welsh Corgi
+Golden Retriever
 
 CHARACTERISTICS ----------------
-
+Color: golden
+Size: large
+Coat: long
+Eye count: 2 
 Friendly: yes
-Legs: short
-Eye count: 2
-Name: varies
-Color: varies
 
 BEHAVIOR -----------------------
+Bark 
+Fetch
 Jump
-Hug
-bark
 
 =end
