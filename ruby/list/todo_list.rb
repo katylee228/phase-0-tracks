@@ -1,30 +1,38 @@
-class TodoList
-
-  def initialize(array) 
-    @array = array
+class TodoList 
+  
+  def initialize(todolist)
+    @todolist = todolist
   end 
 
-  def get_items
-    @array
+  def get_items 
+    @todolist 
   end 
 
-  def add_item(str)
-    @array.push(str)
-  end
 
-  def delete_item(str)
-    @array.delete(str)
-    @array
-  end
-
-  def get_item(i)
-    @array[i]
+  def add_item(item)
+    @todolist.push(item)
   end 
 
-end
+  def delete_item(item)
+    @todolist.delete(item)
+  end 
+
+  def get_item(index)
+    @todolist[index]
+  end 
+
+end 
 
 list = TodoList.new(["do the dishes", "mow the lawn"])
 p list.get_items
-p list.add_item("mop")
-p list.delete_item("do the dishes")
+
+list = TodoList.new(["do the dishes", "mow the lawn"])
+list.add_item("mop")
+p list.get_items
+
+list = TodoList.new(["do the dishes", "mow the lawn"])
+list.delete_item("do the dishes")
+p list.get_items
+
+list = TodoList.new(["do the dishes", "mow the lawn"])
 p list.get_item(0)
