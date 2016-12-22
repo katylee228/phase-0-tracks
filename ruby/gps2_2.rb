@@ -1,105 +1,103 @@
 # Method to create a list
-# input: string of items separated by spaces (example: "carrots apples cereal pizza")
-# steps: 
-  # split each value with each space
-  # set default quantity (1)
-  # print the list to the console [can you use one of your other methods here?]
-# output: hash (key => item, value => quantity)
+# input: string of items separated by spaces ("carrots, apples, cereal, pizza")
+# steps:
+  # Take string of items as a parameter
+  # put items into an array
+  # Use a loop to make items in array keys in a new hash
+  # set default quantity = 1 (value)
+  # print the list to the console [maybe .each method?]
+# output: hash
 
 # Method to add an item to a list
-# input: item name and optional quantity
-# steps:
-  #create a new hash using keys(items) and values(quantity)
-  #merge it to the original hash
+# input: list, item name, and optional quantity
+# steps: create a method by using 3 parameters (list item and quantity)
+# List[item] = quantity
+# Return list
 # output: hash
 
 # Method to remove an item from the list
-# input: item name
-# steps:
-  #delete the item with its quantity using delete function(?)
-  #print the list to the console
+# input: list item
+# steps: create a method using 2 parameters
+# use .delete method
+# and return list
 # output: hash
 
 # Method to update the quantity of an item
-# input: specific item's quantity
-# steps:
-  #update the quantity of an item by using a new equation
-# output: hash 
+# input: list item and quantity
+# steps: create a method using 3 parameters
+# List[item] = quantity
+# return list
+# output: hash
 
 # Method to print a list and make it look pretty
-# input: print a string that explains the shopping list
-# steps:
-  # print a string
-  #print each item and its quantity on one line
-# output: hash 
-
-puts "What's in your shopping list?"
-items = gets.chomp 
-
+# input: last hash
+# steps: use .each method to print keys and values as items and as quantity
+# output: strings
 
 def create_list(str)
-array1 = str.split(' ')
-hash1 = Hash[array1.collect { |item| [item, 1]}]
-p hash1
+  hash={}
+  array=str.split(' ')
+  i=0
+  while i<array.length
+  hash[array[i]]=1
+  i+=1
+end
+  hash
 end
 
-list1 = create_list(items)
 
-
-puts "What do you want to add?"
-add_item = gets.chomp
-array2 = add_item.split(' ')
-h = Hash[*array2]
-
-def add_list(list_1, list_2)
-  list = list_1.merge(list_2)
-  p list
+def add_list(list,item,quantity)
+  list[item]=quantity
+list
 end
+
+def remove_list(list,item)
+  if list.keys.include? item 
+    list.delete(item)
+  else 
+    puts "please "
   
-list2 = add_list(list1, h)
-
-puts "What do you want to delete?"
-delete_item = gets.chomp
-
-def delete_list(item, list)
-  list.delete(item)
-  p list
+  list
 end
 
-list3 = delete_list(delete_item, list2)
-
-
-puts "What do you want to update?"
-update_item = gets.chomp
-array3 = update_item.split(' ')
-
-def update_list(item, quantity, list)
-  list[item] = quantity
-  p list
+def update_list(list,item,quantity)
+  list[item]=quantity
+  list
 end
 
-final = update_list(array3[0], array3[1], list3)
+def print_pretty(list)
+  list.each do |item,quantity|
+  puts "#{item}: #{quantity}"
+  end
 
-puts "Your shopping list:"
-final.each { |key, value| puts "#{key} #{value}"}
 
-=begin
+  end
 
-What did you learn about pseudocode from working on this challenge?
-  Pseudocode allows me to plan and predict what the output will look like.
-What are the tradeoffs of using arrays and hashes for this challenge?
-  I had to figure out how to transform arrays to hash.
-What does a method return?
-  It returns one or more values from a Ruby Method
-What kind of things can you pass into methods as arguments?
-  key, value, list
-How can you pass information between methods?
-  by creating a method that has parameters that allows the information to pass in.
+#Driver code
+puts "Type all the items you need."
+input=gets.chomp
+new_list=create_list(input)
+add_list(new_list,'potato',2)
+add_list(new_list,'chips',3)
+add_list(new_list,'radish',5)
+remove_list(new_list,'cherries')
+update_list(new_list,'chips',10)
+print_pretty(new_list)
+
+=begin 
+*What did you learn about pseudocode from working on this challenge?
+Pesudo code makes it easy to do the initial solution
+*What are the tradeoffs of using arrays and hashes for this challenge?
+Since hash has keys and values, it's good to pair items and its quantity, but I can't find it with an index.
+So when I iterate keys in the hash, I had to use an array which is useful when it comes to index.
+*What does a method return?
+The last line in the method
+*What kind of things can you pass into methods as arguments?
+In this case, we passed into a list(hash) into methods as arguments
+*How can you pass information between methods?
+define that new_list(hash) equals the return value of the first method.
+And then use the newly defined hash as a parameter in other methods
 What concepts were solidified in this challenge, and what concepts are still confusing?
-  I could know what "pass in" means now.
+After studying attributes in class, I was not certain if it is the best way to pass in arguments into other methods.
+Anyway, it's getting more solidifying.
 
-
-  
-  
-
-  
