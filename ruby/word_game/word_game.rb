@@ -37,14 +37,12 @@ class Word_Game
         @game_over = true
         
       elsif @word.include? alphabet
-        @guess_count += 1 
-        i = 0 
-        while i < @word.length
-          if @word[i] == alphabet 
-            puts @special_chr.chop.insert(i, alphabet)
+        @guess_count += 1
+        @word.length.times do |index|
+          if @word[index] == alphabet
+            puts @special_chr.chop.insert(index, alphabet)
           end
-        i += 1 
-        end
+        end 
          @game_over = false
       else 
         @guess_count += 1 
@@ -70,15 +68,4 @@ while !word_game.game_over
     break
   end 
 end 
-
-
-
-
-
-
-
-
-
-
-
 
