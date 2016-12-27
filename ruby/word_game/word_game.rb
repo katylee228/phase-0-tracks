@@ -21,13 +21,15 @@
 =end 
 
 class Word_Game
-   attr_accessor :game_over, :guess_count
+  attr_reader :word_array, :guess_count
+   attr_accessor :game_over
 
   def initialize(word)
     @word = word
     @special_chr = "*" * word.length 
     @game_over = false 
     @guess_count = 0 
+    @word_array =[]
   end 
 
   def guess(alphabet)
@@ -35,6 +37,9 @@ class Word_Game
       if @word == alphabet
         puts "congratulations!"
         @game_over = true
+      
+      elsif @word_array.include? alphabet
+        puts "You entered the letter you already typed!"
         
       elsif @word.include? alphabet
         @guess_count += 1
@@ -42,11 +47,14 @@ class Word_Game
           if @word[index] == alphabet
             puts @special_chr.chop.insert(index, alphabet)
           end
-        end 
+        end
+        @word_array << alphabet
          @game_over = false
+      
       else 
         @guess_count += 1 
         puts "Please try again!"
+        @word_array << alphabet
         @game_over = false 
       end
   end 
@@ -68,4 +76,3 @@ while !word_game.game_over
     break
   end 
 end 
-
