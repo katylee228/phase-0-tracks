@@ -76,3 +76,61 @@ while !word_game.game_over
     break
   end 
 end 
+
+
+#I added a new game with a different approach
+=begin
+* create WordGame class 
+* create a method that takes a parameter from user1 
+* create a Guess method that takes a string from user2 
+  * guesses are limited by the length of the parameter from user1
+  *repeated guess do not count against the user2
+  *gives continual feedback (e.g. if user1's input is unicorn and user2's input is c, the result will be ___c___)
+  *IF user2 guesses gives all the letters within the length of the word that user1 gave, user2 will have congratulatory message, ELSE taunting message
+*add driver code 
+=end
+
+class WordGame
+  
+
+  def initialize(user1_word)
+    @user1_word = user1_word 
+    @special_letter = Array.new(@user1_word.length, '_ ')
+    
+  end
+  
+    
+  
+  def guess_for_user2(user2_letter)
+    array = @user1_word.split('')
+    array.each_index do |index|
+      if array[index] == user2_letter
+        @special_letter[index] = user2_letter
+      end 
+    end
+   @special_letter.join('')
+  end
+   
+  
+
+  
+end
+
+puts "USER1: Please type a word:"
+user1 = gets.chomp 
+wordgame = WordGame.new(user1)
+
+i = 0 
+while i < user1.length 
+puts "USER2: Please guess a letter:"
+user2 = gets.chomp
+p wordgame.guess_for_user2(user2)
+
+if user1 == wordgame.guess_for_user2(user2)
+  puts "Congratulations!"
+  exit!
+end
+i += 1 
+end 
+
+puts "Sorry, you lost a game..."
