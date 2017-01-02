@@ -18,7 +18,7 @@
       * game_status should still be true 
 * Using loop with the guess_count attribute, allow users to guess as many as the length of the word only
    * Use IF statement so that it will print the result until the length of the word, so IF they can't guess the word, it will print taunting message
-=end 
+
 
 class Word_Game
   attr_reader :word_array, :guess_count
@@ -77,26 +77,28 @@ while !word_game.game_over
   end 
 end 
 
-
-#I added a new game with a different approach
-=begin
-* create WordGame class 
-* create a method that takes a parameter from user1 
-* create a Guess method that takes a string from user2 
-  * guesses are limited by the length of the parameter from user1
-  *repeated guess do not count against the user2
-  *gives continual feedback (e.g. if user1's input is unicorn and user2's input is c, the result will be ___c___)
-  *IF user2 guesses gives all the letters within the length of the word that user1 gave, user2 will have congratulatory message, ELSE taunting message
-*add driver code 
 =end
 
+#I added a new game with a different approach
+
+# create WordGame class 
+# create a method that takes a parameter from user1 
+# create a Guess method that takes a string from user2 
+  # guesses are limited by the length of the parameter from user1
+  # repeated guess do not count against the user2
+  # gives continual feedback (e.g. if user1's input is unicorn and user2's input is c, the result will be ___c___)
+  # IF user2 guesses gives all the letters within the length of the word that user1 gave, user2 will have congratulatory message, ELSE taunting message
+# add driver code 
+
+
 class WordGame
-  
+  attr_reader :is_over
 
   def initialize(user1_word)
     @user1_word = user1_word 
     @special_letter = Array.new(@user1_word.length, '_ ')
-    
+    @is_over = false 
+    @guess_time = @user1_word.length 
   end
   
     
@@ -108,9 +110,17 @@ class WordGame
         @special_letter[index] = user2_letter
       end 
     end
-   @special_letter.join('')
+   new_word = @special_letter.join('')
   end
    
+   def game_over
+     @guess_time -= 1 
+      if @guess_time == 0 
+       @is_over = true
+     end
+    end 
+     
+  
   
 
   
@@ -120,17 +130,16 @@ puts "USER1: Please type a word:"
 user1 = gets.chomp 
 wordgame = WordGame.new(user1)
 
-i = 0 
-while i < user1.length 
-puts "USER2: Please guess a letter:"
-user2 = gets.chomp
-p wordgame.guess_for_user2(user2)
+while !wordgame.is_over
+  puts "USER2: Please guess a letter:"
+  user2 = gets.chomp
+  puts wordgame.guess_for_user2(user2)
 
-if user1 == wordgame.guess_for_user2(user2)
-  puts "Congratulations!"
-  exit!
-end
-i += 1 
+  if user1 == wordgame.guess_for_user2(user2)
+    puts "Congratulations!"
+    break
+  
+  elsif wordgame.game_over
+    puts "Sorry, you lost a game..."
+  end
 end 
-
-puts "Sorry, you lost a game..."
