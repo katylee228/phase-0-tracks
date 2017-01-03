@@ -4,9 +4,8 @@
 # We spent [#] hours on this challenge.
 
 # EXPLANATION OF require_relative
-# require_relative compliments built-in method to access a file that is relative to a file containing 
-# 'require_relative' statement 
-# require => absolute path
+#
+#
 require_relative 'state_data'
 
 class VirusPredictor
@@ -16,36 +15,33 @@ class VirusPredictor
     @population = population
     @population_density = population_density
   end
-#Virus effects is a method that runs two more methods
+
   def virus_effects
-    predicted_deaths
-    speed_of_spread
+    predicted_deaths(@population_density, @population, @state)
+    speed_of_spread(@population_density, @state)
   end
 
-  private 
-  # private methods can't be called outside of the class scope
+  private
 
-#predicted deaths determines how many will die based on pop density being < or > a #. 
-  def predicted_deaths
+  def predicted_deaths(population_density, population, state)
     # predicted deaths is solely based on population density
     if @population_density >= 200
-      times = 0.4
+      number_of_deaths = (@population * 0.4).floor
     elsif @population_density >= 150
-      times = 0.3
+      number_of_deaths = (@population * 0.3).floor
     elsif @population_density >= 100
-      times = 0.2
+      number_of_deaths = (@population * 0.2).floor
     elsif @population_density >= 50
-      times = 0.1
+      number_of_deaths = (@population * 0.1).floor
     else
-      times = 0.5
+      number_of_deaths = (@population * 0.05).floor
     end
-      number_of_deaths = (@population * times).floor
+
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
 
   end
-#speed of spread determines rate of spread where pop density is < or > a #  the speed increases
-  def speed_of_spread
-    #in months
+
+  def speed_of_spread(population_density, state) #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
     speed = 0.0
@@ -71,22 +67,21 @@ end
 #=======================================================================
 
 # DRIVER CODE
-# initialize VirusPredictor for every state
-
-STATE_DATA.each do |state, info|
-  VirusPredictor.new(state, info[:population_density], info[:population]).virus_effects
-  end 
-
-#========================================================================
-
-#REFLECT
-# The hash in a hash has symbols as keys whereas the outer hash has strings as keys.
-# require_relative compliments built-in method to access a file that is relative to a file containing
-# We use 'require' when we need to get access to files and the code that is inside.
-# use each method to iterate through a hash
-# I realized that there is no need of variables in private methods since we have writable attributes
-# attributes, loading path etc
+ # initialize VirusPredictor for each state
 
 
+alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
+alabama.virus_effects
+
+jersey = VirusPredictor.new("New Jersey", STATE_DATA["New Jersey"][:population_density], STATE_DATA["New Jersey"][:population])
+jersey.virus_effects
+
+california = VirusPredictor.new("California", STATE_DATA["California"][:population_density], STATE_DATA["California"][:population])
+california.virus_effects
+
+alaska = VirusPredictor.new("Alaska", STATE_DATA["Alaska"][:population_density], STATE_DATA["Alaska"][:population])
+alaska.virus_effects
 
 
+#=======================================================================
+# Reflection Section
