@@ -8,12 +8,16 @@ pseudo code for reverse function
 */
 
 function reverse(string) {
-  var new_str = ""
+  var new_str = "";
   for (var i = string.length -1; i >= 0; i --) {
     new_str += string[i];
   }
   return new_str;
 }
 
-console.log(reverse("hello!"))
+console.log(reverse("hello!"));
 
+
+if (1 == 1) {
+  console.log(reverse("great day!"));
+}
