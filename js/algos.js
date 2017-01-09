@@ -1,66 +1,140 @@
-/*
 
-* Find the Longest Phrase
-* create a new variable that has an example array
-* create a function that returns the longest word in the array
-* print the value of the function
-*/
+//Find the longest phrase
+ // write a function that takes an array of words or phrases
+ // create an array which has different lengths of words
+ // using the length of the words, print the longest word in the array 
 
-var longWords = ["long phrase","longest phrase","longer phrase"];
-var sorted = longWords.sort(function (a, b) { return b.length - a.length });
+function FindLongestWord(array) {
+  var longestWord = "";
+  
+  array.forEach(function(phrase) {
+    if(phrase.length > longestWord.length) {
+      longestWord = phrase;
+    }
+  });
 
-console.log(sorted[0]);
+  return longestWord;
+}
 
-/*
-* create a function which requires two parameters(hash) to see if they have same values
-* use if statement 
-* create a variable that is a hash which hasa two keys and values
-* returns true when they have at least one same value 
+var phrases = ["long phrase","longest phrase","longer phrase"];
+console.log(FindLongestWord(phrases));
 
-*/
 
-function check(hash1, hash2) {
-  if (hash1.name == hash2.name) {
-    return true;
-  }
-  else if (hash1.age == hash2.age) {
+
+//Find a key-value match
+  //create a function that takes two hashes
+    // IF there is a match of value of keys, it will return true
+    //IF not (ELSE), it returns false.
+  //create hashes for driver code 
+  //print the return value
+
+
+function value_match(hash1, hash2) {
+  if ((hash1.name == hash2.name) || (hash1.age == hash2.age)) {
     return true;
   }
   else {
-  return false;
+    return false;
+  }
 }
-}
 
-var hash1 = {name: "Steven", age: 54};
-var hash2 = {name: "Tamir", age: 54};
-console.log(check(hash1, hash2));
-var hash3 = {name: "David", age: 34};
-var hash4 = {name: "Katy", age: 45};
-console.log(check(hash3, hash4));
-
+var hash1 = {name: "David", age: 34};
+var hash2 = {name: "James", age: 34};
+console.log(value_match(hash1,hash2));
+var hash3 = {name: "David", age: 21};
+var hash4 = {name: "James", age: 34};
+console.log(value_match(hash3,hash4));
 
 
-var randomNum = Math.floor((Math.random() * 10)+1);
-function randomWholeNum() {
-  return Math.random();
-}
+//Generate random test data
+  //write a function that takes an integer for length 
+  //it returns an array of string of the given length 
+  //each string should be of randomly varying length form 1 to 10 
+  //add driver code that does the following 10 times: 
+    //generate an array, use longest function, and print the result
+
 function makeid(n)
 {
     var text = "";
     var possible = "abcdefghijklmnopqrstuvwxyz";
-    for( var i=0; i < n; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    for( var i=0; i < n; i++ ) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));}
     return text;
 }
-console.log(makeid(randomNum));
+
+function random_data(integer) {
+  var array = [];
+  for (i=0;i < integer; i++) {
+    var randomNum = Math.floor((Math.random() * 10)+1);
+    array.push(makeid(randomNum));
+  }
+  return array;
+}
 
 
+console.log(random_data(3));
+console.log(FindLongestWord(random_data(3)));
 
 
+//driver code 
 
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(4));
 
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(4));
 
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(5));
 
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(5));
 
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(2));
 
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(2));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(3));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(3));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(4));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(4));
 
