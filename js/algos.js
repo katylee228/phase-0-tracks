@@ -13,13 +13,10 @@ function find_longest(array) {
       longest_word = array[i].length;
     }
   }
-  return longest_word;
+  return array[i]
 }
 
 console.log(find_longest(phrases));
-
-
-
 
 
 
@@ -47,4 +44,31 @@ var hash3 = {name: "David", age: 21};
 var hash4 = {name: "James", age: 34};
 console.log(value_match(hash3,hash4));
 
+
+//Generate random test data
+  //write a function that takes an integer for length 
+  //it returns an array of string of the given length 
+  //each string should be of randomly varying length form 1 to 10 
+  //add driver code that does the following 10 times: 
+    //generate an array, use longest function, and print the result
+
+function makeid(n)
+{
+    var text = "";
+    var possible = "abcdefghijklmnopqrstuvwxyz";
+    for( var i=0; i < n; i++ ) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));}
+    return text;
+}
+
+function random_data(integer) {
+  var array = [];
+  for (i=0;i < integer; i++) {
+    var randomNum = Math.floor((Math.random() * 10)+1);
+    array.push(makeid(randomNum));
+  }
+  return array
+}
+console.log(random_data(3));
+console.log(find_longest(random_data(3)));
 
