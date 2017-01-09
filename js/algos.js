@@ -29,7 +29,7 @@ console.log(FindLongestWord(phrases));
   //print the return value
 
 
-function value_match(hash1, hash2) 
+function value_match(hash1, hash2) {
   if ((hash1.name == hash2.name) || (hash1.age == hash2.age)) {
     return true;
   }
@@ -68,8 +68,73 @@ function random_data(integer) {
     var randomNum = Math.floor((Math.random() * 10)+1);
     array.push(makeid(randomNum));
   }
-  return array
+  return array;
 }
+
+
 console.log(random_data(3));
-console.log(find_longest(random_data(3)));
+console.log(FindLongestWord(random_data(3)));
+
+
+//driver code 
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(4));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(4));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(5));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(5));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(2));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(2));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(3));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(3));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(4));
+
+function driver_code(array) {
+  console.log(array);
+  console.log(FindLongestWord(array));
+}
+driver_code(random_data(4));
 
