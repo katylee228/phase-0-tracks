@@ -4,19 +4,20 @@
  // create an array which has different lengths of words
  // using the length of the words, print the longest word in the array 
 
-var phrases = ["long phrase","longest phrase","longer phrase"];
-var longest_word = 0;
-
-function find_longest(array) {
-  for(var i=0; i< array.length; i++) {
-    if (array[i].length > longest_word) {
-      longest_word = array[i].length;
+function FindLongestWord(array) {
+  var longestWord = "";
+  
+  array.forEach(function(phrase) {
+    if(phrase.length > longestWord.length) {
+      longestWord = phrase;
     }
-  }
-  return array[i]
+  });
+
+  return longestWord;
 }
 
-console.log(find_longest(phrases));
+var phrases = ["long phrase","longest phrase","longer phrase"];
+console.log(FindLongestWord(phrases));
 
 
 
