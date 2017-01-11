@@ -1,0 +1,37 @@
+SELECT * FROM meetup_list;
+1|Julie Butler|3|true|1
+2|Katy Lee|2|true|2
+3|Chloe Lee|1|false|2
+4|Joe DiNucci|5|true|1
+5|Richard Lyons|4|false|2
+6|Josh Tabery|2|false|2
+7|Mina Hill|1|true|1
+8|Roger Mawer|3|true|1
+
+UPDATE meetup_list SET rsvp = "true" WHERE name = "Richard Lyons";
+
+SELECT * FROM meetup_list;
+1|Julie Butler|3|true|1
+2|Katy Lee|2|true|2
+3|Chloe Lee|1|false|2
+4|Joe DiNucci|5|true|1
+5|Richard Lyons|4|true|2
+6|Josh Tabery|2|false|2
+7|Mina Hill|1|true|1
+8|Roger Mawer|3|true|1
+
+SELECT * FROM school_list;
+1|MIIS
+2|Stanford
+
+SELECT meetup_list.name, school_list.school_name FROM meetup_list JOIN school_list ON meetup_list.school = school_list.id;
+Julie Butler|MIIS
+Katy Lee|Stanford
+Chloe Lee|Stanford
+Joe DiNucci|MIIS
+Richard Lyons|Stanford
+Josh Tabery|Stanford
+Mina Hill|MIIS
+Roger Mawer|MIIS
+
+DELETE FROM meetup_list WHERE rsvp = "false";
