@@ -8,3 +8,8 @@ CREATE TABLE IF NOT EXISTS test_score(id INTEGER PRIMARY KEY, name VARCHAR(255),
 SQL
 
 db.execute(create_table_cmd)
+
+def create_students(db, name, score)
+	db.execute("INSERT INTO test_score(name, score) VALUES(?,?)", [name,score])
+end
+
