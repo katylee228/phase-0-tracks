@@ -13,3 +13,7 @@ def create_students(db, name, score)
 	db.execute("INSERT INTO test_score(name, score) VALUES(?,?)", [name,score])
 end
 
+100.times do 
+	create_students(db, Faker::Name.name, Faker::Number.between(from = 0, to = 100))
+end
+
