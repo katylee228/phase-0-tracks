@@ -2,6 +2,10 @@ require 'sqlite3'
 require 'faker'
 
 db = SQLite3::Database.new("scores.db")
-db.result_as_hash = true 
+db.results_as_hash = true 
 
-db.execute ("SELECT * FROM scores.db")
+create_table_cmd = <<-SQL
+CREATE TABLE IF NOT EXISTS scores(id INTEGER PRIMARY KEY, name VARCHAR(255), scores INT)
+SQL
+
+db.execute(create_table_cmd)
