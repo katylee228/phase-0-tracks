@@ -10,6 +10,12 @@ SQL
 db.execute(create_table_cmd)
 
 def create_match(db, prefix,name,age,location)
-	db.execute("INSERT INTO match_info(prefix,name,age,location) VALUES(?,?)", [prefix,name,age,location])
+	db.execute("INSERT INTO match_info(prefix,name,age,location) VALUES(?,?,?,?)", [prefix,name,age,location])
 end
+
+
+create_match(db, Faker::Name.prefix, Faker::Name.name, Faker::Date.between(18,40), Faker::Address.city)
+
+
+
 
