@@ -24,24 +24,31 @@ end
 
 scores = db.execute("SELECT * FROM scores")
 
+def send_email(to,opts={})
+  opts[:server]      ||= 'localhost'
+  opts[:from]        ||= 'email@example.com'
+  opts[:subject]     ||= "You need to see this"
+  opts[:body]        ||= "Important stuff!"
+  
+  msg = <<END_OF_MESSAGE
+From: <#{opts[:from]}>
+To: <#{to}>
+Subject: #{opts[:subject]}
+
+#{opts[:body]}
+END_OF_MESSAGE
+
+  Net::SMTP.start(opts[:server]) do |smtp|
+    smtp.send_message msg, opts[:from], to
+  end
+end
+
 
 puts "Sorting students who passed the test:"
 scores.each do |student|
 	if student['scores'] > 60 
 		puts "#{student["id"]}|#{student['name']}"
-=begin
-		mail = MailFactory.new()
-  		mail.to = "#{student['email']}"
-  		mail.from = "sender@sender.com"
-  		mail.subject = "Great news from DBC!"
-  		mail.text = "Hello #{student['name']}, 
-  					Congratuations! You passed the test!"
-
-  Net::SMTP.start('smtp1.testmailer.com', 25, 'mail.from.domain') { |smtp|
-    mail.to = toaddress
-    smtp.send_message(mail.to_s(), toaddress)
-  }
-=end
+		#send_email(student['email'], opts={server: 'localhost', from: 'email@example.com', subject: "Congraulations", body: "You passed the DBC test!"})
 	end 
 end 
 
