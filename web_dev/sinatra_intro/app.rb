@@ -23,6 +23,36 @@ get '/:person_1/loves/:person_2' do
   "#{params[:person_1]} loves #{params[:person_2]}"
 end
 
+#A /contact route that displays an addres
+get '/contact' do 
+  "18 Shannon Circle, Alameda"
+end
+
+#A /great_job route that can take a person's name as a query parameter
+get '/great_job/:name' do
+  name = params[:name]
+  students = db.execute("SELECT name FROM students")
+  response = ""
+  students.each do |student|
+    if name == student['name']
+      response << "Good job, #{name}!"
+      break
+    else 
+      response << "Good job!"
+      break
+    end
+  end
+  response
+end
+
+#A route that uses route parameters to add two numbers and respond with the result.
+get '/:number1/plus/:number2' do
+  number1 = params[:number1]
+  number2 = params[:number2]
+  number3 = number1.to_i + number2.to_i 
+  "#{number1} + #{number2} = #{number3}"
+end 
+
 # write a GET route that retrieves
 # all student data
 get '/students' do
