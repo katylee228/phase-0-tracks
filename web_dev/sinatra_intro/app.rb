@@ -43,6 +43,13 @@ get '/great_job/:name' do
   response
 end
 
+get '/:number1/plus/:number2' do
+  number1 = params[:number1]
+  number2 = params[:number2]
+  number3 = number1.to_i + number2.to_i 
+  "#{number1} + #{number2} = #{number3}"
+end 
+
 # write a GET route that retrieves
 # all student data
 get '/students' do
