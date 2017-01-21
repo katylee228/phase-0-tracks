@@ -27,7 +27,21 @@ get '/contact' do
   "18 Shannon Circle, Alameda"
 end
 
-
+get '/great_job/:name' do
+  name = params[:name]
+  students = db.execute("SELECT name FROM students")
+  response = ""
+  students.each do |student|
+    if name == student['name']
+      response << "Good job, #{name}!"
+      break
+    else 
+      response << "Good job!"
+      break
+    end
+  end
+  response
+end
 
 # write a GET route that retrieves
 # all student data
