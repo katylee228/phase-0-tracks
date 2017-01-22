@@ -5,3 +5,6 @@ I will create a project that I can experiment and use most of the functions in t
 
 It's written form of resources, but since it has UI that I can experiment on, I believe that it will be very helpful. I will stop and test for every function. 
 
+I realized that it's a better idea to create a big picture that I want to achieve and then check some skills to apply for this project. 
+
+
